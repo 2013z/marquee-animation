@@ -1,0 +1,371 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: zqs
+ * @Date: 2020-10-17 17:09:08
+ * @LastEditors: zqs
+ * @LastEditTime: 2020-10-18 15:08:46
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Animejs demon</title>
+	<script src="js/anime.min.js"></script>
+	<!-- www.animejs.cn-->
+	<style>
+		body {
+			margin: 0;
+		}
+
+		.wrapper {
+			width: 100vw;
+			height: 330px;
+			position: relative;
+			/* margin: 40px auto 0; */
+			background: #ccc;
+			overflow: hidden;
+			z-index: 233;
+		}
+
+		.box {
+			width: 330px;
+			height: 330px;
+			position: absolute;
+			background: yellow;
+			font-size: 25px;
+			line-height: 330px;
+			text-align: center;
+			/* transition: transform 3s linear; */
+		}
+
+		.box:nth-child(odd) {
+			background: #f8f8f8;
+		}
+
+		.box:nth-child(even) {
+			background: #eee;
+		}
+
+		.box-2131231 {
+			background: yellow;
+		}
+
+		.boxes {
+			position: relative;
+		}
+
+		.wrapper1 {
+			width: 100vw;
+			height: 330px;
+			position: relative;
+			/* margin: 40px auto 0; */
+			top: -330px;
+			z-index: 223;
+			background: #ccc;
+			overflow: hidden;
+		}
+
+		.boxes1 {
+			width: 6930px;
+			height: 330px;
+			/* transform: translateX(-2310px); */
+			/* transition: all 5s linear; */
+		}
+
+		.box1 {
+			width: 330px;
+			height: 330px;
+			display: inline-block;
+			background: red;
+			font-size: 25px;
+			line-height: 330px;
+			float: left;
+			text-align: center;
+			/* */
+		}
+
+		.box1:nth-child(odd) {
+			background: #f8f8f8;
+			align-self: center;
+		}
+
+		.box1:nth-child(even) {
+			background: #eee;
+		}
+
+		.move-target {
+			transform: translateX(-2310px);
+		}
+
+		.add-index {
+			z-index: 996;
+		}
+	</style>
+</head>
+
+<body>
+	<button onClick="toPlay()">toPlay </button>
+	<button onClick="toPause()">toPause </button>
+	<div class="parent">
+		<div class="wrapper">
+			<div class="boxes">
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">1
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">2
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px;height: 100%;position: absolute;top:0;left:0;z-index: 233;">3
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">4
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px;height: 100%;position: absolute;top:0;left:0;z-index: 233;">5
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">6
+					</div>
+				</div>
+				<div class="box" data-list-type="1" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">7
+					</div>
+				</div>
+				<!-- 缓冲列 -->
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px;height: 100%;position: absolute;top:0;left:0;z-index: 233;">1
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">2
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">3
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">4
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">5
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">6
+					</div>
+				</div>
+				<div class="box" data-list-type="2" style="width: 330px;">
+					<div class="box-2131231" style="width: 280px; height: 100%;position: absolute;top:0;left:0;z-index: 233;">7
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper1">
+			<div class="boxes1 move-target">
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">1</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">2</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">3</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">4</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">5</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">6</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">7</div>
+				</div>
+				<!-- 缓冲列 -->
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">1</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">2</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">3</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">4</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">5</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">6</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">7</div>
+				</div>
+				<!-- 缓冲列 -->
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">1</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">2</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">3</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">4</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">5</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">6</div>
+				</div>
+				<div class="box1" style="width: 330px;">
+					<div style="width: 280px;background: red; height: 100%;">7</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		xTrans = [];
+		anime.set('.box', {
+			translateX: function (el, i, l) {
+				xTrans[i] = {
+					x: i * 330
+				};
+				return i * 330
+			},
+		});
+		var winW = window.innerWidth
+		console.log("windW", winW)
+		var animation = anime({
+			targets: xTrans,
+			duration: 10000, //走一周持续时间
+			easing: 'linear',
+			x: `-=2310`,
+			loop: true,
+			update: function (anim) {
+				anime.set('.box', {
+					translateX: function (el, i, len) {
+						return xTrans[i].x % 2310
+					}
+				});
+			},
+			change: function () {}
+		})
+		console.log("animation", animation)
+		window.animation = animation
+		// setTimeout(() => {
+		// animation.pause();
+		// setTimeout(() => {
+		// 	animation.seek(animation.duration * 660);
+		// 	animation.play();
+		// }, 1000)
+		// }, 1000)
+
+		function getstyle(sname) {
+			for (var i = 0; i < document.styleSheets.length; i++) {
+				var rules;
+				if (document.styleSheets[i].cssRules) {
+					rules = document.styleSheets[i].cssRules;
+				} else {
+					rules = document.styleSheets[i].rules;
+				}
+				for (var j = 0; j < rules.length; j++) {
+					if (rules[j].selectorText == sname) {
+						return rules[j].style;
+					}
+				}
+			}
+		}
+
+		function toPause() {
+			animation.pause()
+			var list1 = document.querySelectorAll(".box")
+			// 只需要处理首个 以及边界问题就好了
+			var firstDom;
+			var index = 0;
+			var translateX = 0;
+			for (let i = 0; i < list1.length; i++) {
+				const style = list1[i].getAttribute("style")
+				window.style = style
+				translateX = style.match(/\d+\.\d+/) * 1
+				if (translateX <= 330 && translateX > 0) {
+					firstDom = list1[i];
+					index = firstDom.innerText * 1
+					break;
+				}
+			}
+			// animation.seek(animation.duration * 330);
+			console.log("firstDom", firstDom);
+			console.log("index", index);
+			console.log("translateX", translateX);
+			console.log("new translateX", -2310 + (-index * 330));
+			const wrap = document.querySelector(".boxes1");
+			const tmp = document.querySelector(".wrapper1");
+			tmp.classList.add("add-index");
+			const target = this.getstyle('.move-target');
+			console.log("target", target.transform)
+			target.transform = `translateX(${-2310 + (index - 1) * -330 + (-translateX)	}px)`
+			animation.seek(animation.duration);
+			setTimeout(() => {
+				// 模拟点击下标
+				let targetIndex = Math.floor(Math.random() * 7)
+				targetIndex = 3
+				console.log("移动后的位置", targetIndex, -2310 + (targetIndex - 1) * -330);
+				wrap.setAttribute("style",
+					`transform: translateX(${-2310 + (targetIndex - 1) * -330	}px);transition: transform 3s linear;`
+				)
+				setTimeout(() => {
+					tmp.classList.remove("add-index");
+					// 当前每个block的移动倍数关系为 1450
+					// animation.seek(animation.duration * 330 * 2);
+					animation.seek(1450 * 2);
+
+					animation.play()
+					wrap.setAttribute("style", "");
+					target.transform = `transform: translateX(-2310px)`;
+				}, 3000)
+			}, 5)
+		}
+
+		function toPlay() {
+			console.log("sadasda")
+			animation.play()
+		}
+
+		window.addEventListener("mouseover", (e) => {
+			console.log("12312312312", e.type)
+			if (e.target.className.match(/box(.*?)/)) {
+				animation.pause()
+			}
+		})
+
+		window.addEventListener("mouseout", (e) => {
+			console.log("asdasdasd", e.type)
+			if (e.target.className.match(/box(.*?)/)) {
+				animation.play()
+			}
+		})
+
+		setInterval(() => {
+			console.log("currentTim", animation.currentTime)
+		}, 500)
+	</script>
+</body>
+
+</html>
