@@ -180,6 +180,7 @@ export default class Marquee extends Vue {
     for (let i = 0; i < blockList.length; i++) {
       const style = blockList[i].getAttribute("style");
       // @ts-ignore
+      // @ts-ignore
       translateX = style.match(/\d+\.\d+/) * 1 || 0;
       if (translateX <= 333 && translateX > 0) {
         firstDom = blockList[i];
